@@ -31,7 +31,7 @@ CSV.open(output_file, 'w', write_headers: true, headers: headers) do |csv|
     response = Typhoeus.get(url)
     doc = Nokogiri::HTML(response.body)
 
-    # Replace br tags with commas
+    # Replace br tags with newlines
     doc.css('br').each{ |br| br.replace "\n" }
 
     csv << [
